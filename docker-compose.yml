@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: DockerFile
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - DATABASE_URL=sqlite:///./backend/data/scam_community.db
+      - LICENSE_PUBLIC_KEY_HEX=efa857aff6c8039909d8427a66dec4f12d0271d89576fc71585815e4c2c79845
+    volumes:
+      - app-data:/app/backend/data
+    restart: unless-stopped
+
+volumes:
+  app-data:

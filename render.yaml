@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: community-scam-map
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: "pip install -r requirements.txt && python backend/seed_data.py"
+    startCommand: "uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: LICENSE_PUBLIC_KEY_HEX
+        value: efa857aff6c8039909d8427a66dec4f12d0271d89576fc71585815e4c2c79845
